@@ -7,6 +7,7 @@ from sqlalchemy.orm import sessionmaker
 load_dotenv()
 
 LOG_CHANNEL = os.getenv("LOG_CHANNEL")
+CROSS_CHANNEL = os.getenv("CROSS_CHANNEL")
 WELCOM_CHANNEL = os.getenv("WELCOM_CHANNEL")
 SERVER_ID = os.getenv("SERVER_ID")
 

@@ -5,6 +5,7 @@ import godvile
 import config
 from helpers import is_good_god, is_higher_than_cardinal
 from db import User
+import io
 
 intents = discord.Intents.all()
 intents.message_content = True
@@ -95,3 +96,8 @@ async def remove_all_roles(discord_id):
         remove_role = discord.utils.get(server.roles, name = r)
         member.remove_roles(remove_role)
         await logger(f'``{member.name}`` удалена роль ``{r}``')
+
+async def send_screenshot(screenshot_bytes):
+    channel = client.get_channel(int(config.CROSS_CHANNEL))
+    screenshot_file = discord.File(io.BytesIO(screenshot_bytes), filename="element_screenshot.png")
+    await channel.send(file=screenshot_file)

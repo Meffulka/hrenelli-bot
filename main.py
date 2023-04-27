@@ -11,7 +11,8 @@ def run_migrations():
     command.upgrade(alembic_cfg, "head")
 
 async def scheduler():
-    schedule.every(5).minutes.do(jobs.update_user)
+    schedule.every(5).minutes.do(jobs.cross)
+    # schedule.every().day.at("06:00").do(jobs.cross)
     while True:
         await schedule.run_pending()
         await asyncio.sleep(1)
